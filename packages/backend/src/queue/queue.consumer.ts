@@ -8,8 +8,9 @@ export class BooksConsumer {
   // ) {}
 
   @Process('createBook')
-  async createTransfer(job: Job<any>) {
-    //
+  async createBook(job: Job<any>) {
+    const { data } = job;
+    console.log(data);
   }
 
   @OnQueueActive()

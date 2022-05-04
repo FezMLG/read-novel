@@ -22,13 +22,10 @@ async function bootstrap() {
     })
   );
   const config = new DocumentBuilder()
-    .setTitle('BankEL API')
-    .setDescription('The BankEL API Playground')
+    .setTitle('Read Novel API')
+    .setDescription('The Read Novel API Playground')
     .setVersion('1.0')
-    .addTag('transfers')
-    .addTag('users')
-    .addTag('login')
-    .addBearerAuth()
+    .addTag('books')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
@@ -36,7 +33,7 @@ async function bootstrap() {
   const serverAdapter = new ExpressAdapter();
   serverAdapter.setBasePath('/bull-board');
 
-  const aQueue = app.get<Queue>(`BullQueue_transfers-queue`);
+  const aQueue = app.get<Queue>(`BullQueue_books-queue`);
 
   createBullBoard({
     queues: [new BullAdapter(aQueue)],
@@ -45,12 +42,12 @@ async function bootstrap() {
 
   app.use(
     '/bull-board',
-    expressBasicAuth({
-      users: {
-        admin: 'admin',
-      },
-      challenge: true,
-    }),
+    // expressBasicAuth({
+    //   users: {
+    //     admin: 'admin',
+    //   },
+    //   challenge: true,
+    // }),
     serverAdapter.getRouter()
   );
 

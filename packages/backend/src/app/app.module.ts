@@ -5,15 +5,7 @@ import { AppService } from './app.service';
 import { BullModule } from '@nestjs/bull';
 
 @Module({
-  imports: [
-    BookModule,
-    BullModule.forRoot({
-      redis: {
-        host: 'localhost',
-        port: 6379,
-      },
-    }),
-  ],
+  imports: [BookModule],
   controllers: [AppController],
   providers: [AppService],
 })
