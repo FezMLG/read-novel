@@ -19,9 +19,9 @@ import { BooksConsumer } from './queue.consumer';
         port: 6379,
       },
     }),
-    BullModule.registerQueue({
-      name: 'books-queue',
-    }),
+    // BullModule.registerQueue({
+    //   name: 'books-queue',
+    // }),
     // TypeOrmModule.forFeature([TransferEntity]),
     // forwardRef(() => UserModule),
   ],

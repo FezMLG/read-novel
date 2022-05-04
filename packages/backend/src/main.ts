@@ -42,12 +42,12 @@ async function bootstrap() {
 
   app.use(
     '/bull-board',
-    // expressBasicAuth({
-    //   users: {
-    //     admin: 'admin',
-    //   },
-    //   challenge: true,
-    // }),
+    expressBasicAuth({
+      users: {
+        admin: 'admin',
+      },
+      challenge: true,
+    }),
     serverAdapter.getRouter()
   );
 
